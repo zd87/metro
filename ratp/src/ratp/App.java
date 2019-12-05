@@ -10,7 +10,7 @@ public class App {
 	Line M14 = buildLine("M14");
 	String[] stationNamesM14 = { "Saint-Lazare", "Madeleine", "Pyramides",
 		"Chatelet", "Gare de Lyon", "Bercy", "Cour Saint-Emilion",
-		"Bibliotheque François-Mitterrand", "Olympiades" };
+		"Bibliotheque FranÃ§ois-Mitterrand", "Olympiades" };
 	int[] durationsM14 = { 2, 2, 2, 4, 3, 1, 1, 1 };
 	List<Station> stationsM14 = buildStations(M14, stationNamesM14);
 	List<Journey> journeys = buildJourneys(stationsM14, durationsM14);
@@ -61,12 +61,14 @@ public class App {
 		departure = journey.getArrival();
 		arrival = journey.getDeparture();
 	    }
-	    if (departure.equals(userDeparture) || moving) {
-		result += journey.getDuration();
-		moving = true;
-	    }
-	    if (arrival.equals(userArrival)) {
-		moving = false;
+	    if (userDeparture != userArrival) {
+		if (departure.equals(userDeparture) || moving) {
+		    result += journey.getDuration();
+		    moving = true;
+		}
+		if (arrival.equals(userArrival)) {
+		    moving = false;
+		}
 	    }
 	}
 	System.out
