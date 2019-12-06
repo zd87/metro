@@ -14,8 +14,9 @@ public class App {
 	int[] durationsM14 = { 2, 2, 2, 4, 3, 1, 1, 1 };
 	List<Station> stationsM14 = buildStations(M14, stationNamesM14);
 	List<Journey> journeys = buildJourneys(stationsM14, durationsM14);
-	itinerary(stationsM14.get(2), stationsM14.get(4), journeys,
-		stationsM14);
+	Station pyramides = new Station("Pyramides", M14); // to test equals()
+							   // and hashCode()
+	itinerary(pyramides, stationsM14.get(0), journeys, stationsM14);
     }
 
     static Line buildLine(String name) {
@@ -44,6 +45,10 @@ public class App {
 
     static int itinerary(Station userDeparture, Station userArrival,
 	    List<Journey> journeys, List<Station> stations) {
+	System.out.println("user input: " + userDeparture + ", hashCode: "
+		+ userDeparture.hashCode());
+	System.out.println("registered: " + stations.get(1) + ", hashCode: "
+		+ stations.get(1).hashCode());
 	int result = 0;
 	boolean moving = false;
 	boolean reverse = false;
@@ -61,7 +66,7 @@ public class App {
 		departure = journey.getArrival();
 		arrival = journey.getDeparture();
 	    }
-	    if (userDeparture != userArrival) {
+	    if (!userDeparture.equals(userArrival)) {
 		if (departure.equals(userDeparture) || moving) {
 		    result += journey.getDuration();
 		    moving = true;
