@@ -45,10 +45,6 @@ public class App {
 
     static int itinerary(Station userDeparture, Station userArrival,
 	    List<Journey> journeys, List<Station> stations) {
-	System.out.println("user input: " + userDeparture + ", hashCode: "
-		+ userDeparture.hashCode());
-	System.out.println("registered: " + stations.get(1) + ", hashCode: "
-		+ stations.get(1).hashCode());
 	int result = 0;
 	boolean moving = false;
 	boolean reverse = false;
