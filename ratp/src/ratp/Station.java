@@ -44,7 +44,7 @@ public class Station {
 	}
 	if (obj instanceof Station) {
 	    Station test = (Station) obj;
-	    if (test.getName() == this.name && test.getLine() == this.line) {
+	    if (test.getName().equals(this.name)) {
 		return true;
 	    }
 	}
